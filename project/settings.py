@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rqzh0@2_ax-d&wi9e6=sm2#8sclvs_y&fnvg)2u42u=z@wvz#&'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-rqzh0@2_ax-d&wi9e6=sm2#8sclvs_y&fnvg)2u42u=z@wvz#&')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = Flase
 
 ALLOWED_HOSTS = ['portfolio-taf6.onrender.com', 'localhost', '127.0.0.1']
 
@@ -55,8 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -89,7 +87,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database
-# Using MongoEngine, no traditional Django DB settings needed
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.dummy',
+    }
+}
+# Using MongoEngine
+
+MONGODB_URI = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/portfolioDB")
 
 connect(
     db='portfolioDB',
@@ -131,6 +136,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pirachanna0504@gmail.com'
-EMAIL_HOST_PASSWORD = 'nbayxdgbnnuxghpl'  # Consider using environment variable here!
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CONTACT_RECEIVER_EMAIL = 'pirachanna0504@gmail.com'
