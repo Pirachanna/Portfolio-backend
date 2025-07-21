@@ -85,12 +85,6 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.dummy',
-    }
-}
-
 # Using MongoEngine, no traditional Django DB settings needed
 
 connect(
