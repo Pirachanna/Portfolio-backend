@@ -61,10 +61,10 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://pirachanna.github.io/Portfolio/",
+    "https://pirachanna.github.io",
 ]
 
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
     {
@@ -85,6 +85,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.dummy',
+    }
+}
+
 # Using MongoEngine, no traditional Django DB settings needed
 
 connect(
