@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-rqzh0@2_ax-d&wi9e6=sm2#8sclvs_y&fnvg)2u42u=z@wvz#&')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = Flase
+DEBUG = False
 
 ALLOWED_HOSTS = ['portfolio-taf6.onrender.com', 'localhost', '127.0.0.1']
 
